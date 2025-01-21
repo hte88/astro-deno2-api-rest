@@ -1,5 +1,11 @@
+---
+import BaseHeader from "../components/BaseHeader.vue";
+import BaseFooter from "../components/BaseFooter.vue";
+---
+
+
 <!doctype html>
-<html lang="en">
+<html lang="en" class=" bg-white">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -7,38 +13,11 @@
     <meta name="generator" />
     <title>Astro Basics</title>
   </head>
-  <body>
-    <header>
-      <nav class="flex w-full justify-center space-x-12 py-2">
-        <a href="/" class="text-gray-600 hover:text-gray-900">Home</a>
-        <a href="/register" class="text-gray-600 hover:text-gray-900"
-          >Register</a
-        >
-        <a href="/login" class="text-gray-600 hover:text-gray-900">Login</a>
-      </nav>
-    </header>
-    <main class="">
+  <body class="h-screen flex flex-col">
+    <BaseHeader/>
+    <main class="flex flex-1 flex-col justify-center px-6 py-12 lg:px-8">
       <slot />
     </main>
-    <footer class="bg-white">
-      <div
-        class="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8"
-      >
-        <nav
-          class="-mb-6 flex flex-wrap justify-center gap-x-12 gap-y-3 text-sm/6"
-          aria-label="Footer"
-        >
-          <a href="/" class="text-gray-600 hover:text-gray-900">Home </a>
-          <a href="/register" class="text-gray-600 hover:text-gray-900"
-            >Register
-          </a>
-          <a href="/login" class="text-gray-600 hover:text-gray-900">Login </a>
-        </nav>
-
-        <p class="mt-10 text-center text-sm/6 text-gray-600">
-          &copy; 2024 Your Company, Inc. All rights reserved.
-        </p>
-      </div>
-    </footer>
+    <BaseFooter/>
   </body>
 </html>
