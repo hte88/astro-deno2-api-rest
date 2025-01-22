@@ -1,15 +1,36 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import type { User } from "@/models/userModel.ts";
 
-interface FormData {
-    email: string;
-    password: string;
+const user = ref<User>({
+    email: 'olivier@gmail.com',
+    password: '123456789'
+})
+
+async function login(e:Event) {
+  try {
+    const response = await fetch('/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: user.value.email,
+        password: user.value.password,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Login failed');
+    }
+
+    const data = await response.json();
+    console.log('Logged in successfully:', data);
+  } catch (error) {
+    console.error('Error logging in:', error);
+  }
 }
 
-const formData = ref<FormData>({
-    email: '',
-    password: ''
-})
 
 </script>
 
@@ -21,11 +42,11 @@ const formData = ref<FormData>({
     </div>
 
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-      <form class="space-y-6">
+      <form class="space-y-6" @submit.prevent="login">
         <div>
           <label for="email" class="block text-sm/6 font-medium text-gray-900">Email address</label>
           <div class="mt-2">
-            <input v-model="formData.email" type="email" name="email" id="email" autocomplete="email" required class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
+            <input v-model="user.email" type="email" name="email" id="email" autocomplete="email" required class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
           </div>
         </div>
 
@@ -35,7 +56,7 @@ const formData = ref<FormData>({
 
           </div>
           <div class="mt-2">
-            <input v-model="formData.password" type="password" name="password" id="password" autocomplete="current-password" required class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
+            <input v-model="user.password" type="password" name="password" id="password" autocomplete="current-password" required class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
           </div>
         </div>
 
