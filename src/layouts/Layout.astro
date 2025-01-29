@@ -1,23 +1,22 @@
 ---
-import BaseHeader from "../components/BaseHeader.vue";
-import BaseFooter from "../components/BaseFooter.vue";
+import BaseHeader from '../components/BaseHeader.vue'
+import BaseFooter from '../components/BaseFooter.vue'
 ---
 
-
 <!doctype html>
-<html lang="en" class=" bg-white">
+<html lang='en' class='bg-white'>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" />
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='generator' />
     <title>Astro Basics</title>
   </head>
-  <body class="h-screen flex flex-col">
-    <BaseHeader/>
-    <main class="flex flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+  <body class='h-screen flex flex-col'>
+    <BaseHeader />
+    <main class='flex flex-1 flex-col justify-center px-6 py-12 lg:px-8'>
       <slot />
     </main>
-    <BaseFooter/>
+    <BaseFooter />
   </body>
 </html>
