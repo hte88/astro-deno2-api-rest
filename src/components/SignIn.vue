@@ -1,35 +1,32 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import type { User } from "@/models/userModel.ts";
+import type { UserAuth } from "@/models/authModel";
 
-const user = ref<User>({
-    email: 'olivier@gmail.com',
-    password: '123456789'
-})
+const user = ref<UserAuth>({
+  email: "",
+  password: "",
+});
 
-async function login(e:Event) {
+async function login() {
   try {
-    const response = await fetch('/api/login', {
-      method: 'POST',
+    const response = await fetch("http://localhost:8000/api/login", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         email: user.value.email,
         password: user.value.password,
       }),
     });
-
     if (!response.ok) {
       throw new Error('Login failed');
     }
-
-    const data = await response.json();
-    console.log('Logged in successfully:', data);
   } catch (error) {
-    console.error('Error logging in:', error);
+    console.error("Erreur lors de la tentative de connexion :", error);
   }
 }
+
 
 
 </script>
