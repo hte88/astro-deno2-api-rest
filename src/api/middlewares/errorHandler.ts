@@ -11,7 +11,7 @@ export async function errorHandler(
 
     context.response.status = 500
     context.response.body = {
-      error: 'An unexpected error occurred.'
+      error: 'Internal server error'
     }
   }
 }
