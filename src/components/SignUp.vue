@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import type { User } from "@/models/userModel.ts";
+import type { UserAuth } from "@/models/authModel";
 
-const user = ref<User>({
+const user = ref<UserAuth>({
     email: '',
     password: ''
 })
