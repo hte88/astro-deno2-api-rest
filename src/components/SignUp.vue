@@ -7,6 +7,26 @@ const user = ref<UserAuth>({
     password: ''
 })
 
+async function register() {
+  try {
+    const response = await fetch("http://localhost:8000/api/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: user.value.email,
+        password: user.value.password,
+      }),
+    });
+    if (!response.ok) {
+      throw new Error('register failed');
+    }
+  } catch (error) {
+    console.error("Erreur lors de la tentative de connexion :", error);
+  }
+}
+
 </script>
 <template>
 <div class="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -16,7 +36,7 @@ const user = ref<UserAuth>({
     </div>
 
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-      <form class="space-y-6">
+      <form class="space-y-6" @submit.prevent="register">
         <div>
           <label for="email" class="block text-sm/6 font-medium text-gray-900">Email address</label>
           <div class="mt-2">
