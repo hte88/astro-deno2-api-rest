@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { UserAuth } from "@/models/authModel";
+import useNotification from '@/composables/notification'
 
 const user = ref<UserAuth>({
     email: '',
     password: ''
 })
+
+const { showSuccess, showError } = useNotification()
 
 async function register() {
   try {
@@ -20,9 +23,12 @@ async function register() {
       }),
     });
     if (!response.ok) {
+      showError('Erreur !', 'register failed')
       throw new Error('register failed');
     }
+    showSuccess('Succès !', 'L\'opération a réussi')
   } catch (error) {
+    showError('Erreur !', 'Erreur lors de la tentative de connexion')
     console.error("Erreur lors de la tentative de connexion :", error);
   }
 }
