@@ -1,6 +1,7 @@
 ---
 import BaseHeader from '../components/BaseHeader.vue'
 import BaseFooter from '../components/BaseFooter.vue'
+import BaseNotification from '@/components/BaseNotification.vue'
 ---
 
 <!doctype html>
@@ -14,6 +15,15 @@ import BaseFooter from '../components/BaseFooter.vue'
   </head>
   <body class='h-screen flex flex-col'>
     <BaseHeader />
+    <div
+      aria-live='assertive'
+      class='pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6'
+    >
+      <div class='flex w-full flex-col items-center space-y-4 sm:items-end'>
+        <BaseNotification client:load />
+      </div>
+    </div>
+
     <main class='flex flex-1 flex-col justify-center px-6 py-12 lg:px-8'>
       <slot />
     </main>
