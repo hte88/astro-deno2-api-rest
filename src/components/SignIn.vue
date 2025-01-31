@@ -30,7 +30,6 @@ async function login() {
     showSuccess('Succès !', 'L\'opération a réussi')
   } catch (error) {
     showError('Erreur !', 'Erreur lors de la tentative de connexion')
-    console.error("Erreur lors de la tentative de connexion :", error);
   }
 }
 

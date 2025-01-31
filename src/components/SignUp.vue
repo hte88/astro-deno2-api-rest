@@ -26,10 +26,10 @@ async function register() {
       showError('Erreur !', 'register failed')
       throw new Error('register failed');
     }
+
     showSuccess('Succès !', 'L\'opération a réussi')
   } catch (error) {
     showError('Erreur !', 'Erreur lors de la tentative de connexion')
-    console.error("Erreur lors de la tentative de connexion :", error);
   }
 }
 

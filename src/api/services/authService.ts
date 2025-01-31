@@ -1,15 +1,35 @@
-import type { UserAuth } from '@/models/authModel'
-
-const dummy:UserAuth[] = [
-    { email: 'olivier@gmail.com', password: '123456789' },
-    { email: 'olivier1@gmail.com', password: '1' },
-    { email: 'olivier2@gmail.com', password: '2' },
-    { email: 'olivier3@gmail.com', password: '3' }
-]
+import { hash, compare } from "https://deno.land/x/bcrypt/mod.ts";
+import database from '../config/database.ts'
 
 export class AuthService {
-    static register(email: string, password: string):boolean {
-      const existingUser = dummy.find((dummy) => dummy.email === email)
-      return Boolean(existingUser)
+
+  static async register(email: string, password: string): Promise<boolean> {
+    const existingUser = database.findUserByEmail(email)
+
+    if (existingUser) {
+      return true
     }
+
+    const hashedPassword = await hash(password);
+
+    await database.addUser(email, hashedPassword)
+
+    return false
+  }
+
+  static async login(email: string, password: string):Promise<boolean> {
+
+    const user = database.findUserByEmail(email)
+
+    if (!user) {
+      return false
+    }
+
+    const isValidPassword = await compare(password, user[2]);
+    if (!isValidPassword) {
+      return false
+    }
+
+    return true
+  }
 }
