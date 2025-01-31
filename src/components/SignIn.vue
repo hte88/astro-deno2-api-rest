@@ -27,7 +27,7 @@ async function login() {
       showError('Erreur !', 'Login failed')
       throw new Error('Login failed');
     }
-    showSuccess('Succès !', 'L\'opération a réussi')
+    window.location.href = '/';
   } catch (error) {
     showError('Erreur !', 'Erreur lors de la tentative de connexion')
   }
