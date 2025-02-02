@@ -1,8 +1,8 @@
 import { Application } from 'https://deno.land/x/oak@v12.4.0/mod.ts'
 import { oakCors } from 'https://deno.land/x/cors@v1.2.2/mod.ts'
-import { errorHandler } from './middlewares/errorHandler.ts'
-import { noRouteFound } from './middlewares/notFound.ts'
-import { router } from './routes/authRoutes.ts'
+import { errorHandler } from './src/middlewares/errorHandler.ts'
+import { noRouteFound } from './src/middlewares/notFound.ts'
+import { router } from './src/routes/authRoutes.ts'
 
 const app = new Application()
 

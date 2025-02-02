@@ -1,16 +1,13 @@
 {
-    "compilerOptions": {
-        "jsx": "react"
-    },
     "imports": {
+        "@/": "./src/",
         "@oak/oak": "jsr:@oak/oak@^17.1.4",
         "@tajpouria/cors": "jsr:@tajpouria/cors@^1.2.1",
         "oak": "https://deno.land/x/oak/mod.ts",
         "bcrypt": "https://deno.land/x/bcrypt/mod.ts",
         "cors": "https://deno.land/x/cors/mod.ts"
     },
-    "nodeModulesDir": "auto",
-    "scripts": {
-        "start": "deno run --allow-net --allow-env ./src/api/main.ts"
+    "tasks": {
+        "start": "deno run --allow-net --allow-env --allow-read --allow-write ./main.ts "
     }
 }

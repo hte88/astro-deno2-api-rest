@@ -10,10 +10,10 @@
     "lint": "prettier --write  \"**/*.{js,jsx,ts,tsx,md,mdx,astro}\" && eslint --fix \"src/**/*.{js,ts,jsx,tsx,astro}\""
   },
   "dependencies": {
-    "@astrojs/tailwind": "^5.1.5",
+    "@astrojs/tailwind": "^6.0.0",
     "@astrojs/vue": "^5.0.6",
     "@heroicons/vue": "^2.2.0",
-    "astro": "^5.1.8",
+    "astro": "^5.2.3",
     "tailwindcss": "^3.4.17",
     "vue": "^3.5.13"
   },

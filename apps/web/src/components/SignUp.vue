@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import type { UserAuth } from "@/models/authModel";
-import useNotification from '@/composables/notification'
+import type { UserAuth } from "../models/authModel";
+import useNotification from '../composables/notification'
 
 const user = ref<UserAuth>({
     email: '',

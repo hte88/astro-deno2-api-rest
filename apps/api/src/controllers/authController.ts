@@ -1,5 +1,5 @@
 import { Context } from 'https://deno.land/x/oak/mod.ts'
-import type { UserAuth } from '@/models/authModel'
+import type { UserAuth } from 'apps/front/src/models/authModel.ts'
 import { AuthService } from '../services/authService.ts'
 
 const user: UserAuth = { email: 'olivier@gmail.com', password: '123456789' }
