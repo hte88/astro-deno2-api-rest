@@ -1,0 +1,8 @@
+{
+    "name": "@monorepo/eslint-config",
+    "type": "module",
+    "version": "0.0.1",
+    "exports": {
+        ".": "./index.js"
+    }
+}
