@@ -1,0 +1,3 @@
+packages:
+  - 'apps/*'     # Tous les dossiers dans apps/
+  - 'packages/*' # Tous les dossiers dans packages/

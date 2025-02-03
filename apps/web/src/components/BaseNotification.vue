@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import useNotification from '@/composables/notification'
+import useNotification from '../composables/notification'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
 import { CheckCircleIcon, ExclamationCircleIcon, InformationCircleIcon } from '@heroicons/vue/24/solid'
 
